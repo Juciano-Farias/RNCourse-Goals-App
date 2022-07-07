@@ -10,7 +10,7 @@ const GoalInput = ({onAddGoal}) => {
       }
 
     const addGoalHandler = () => {
-        if(enteredGoalText !== '') onAddGoal(enteredGoalText)
+        enteredGoalText && onAddGoal(enteredGoalText)
         setEnteredeGoalText('')
     }
 
