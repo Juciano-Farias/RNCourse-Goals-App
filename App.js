@@ -5,6 +5,8 @@ import {
   Button,
 } from 'react-native';
 
+import { StatusBar } from 'expo-status-bar';
+
 import GoalInput from './components/GoalInput';
 import GoalItem from './components/GoalItem';
 
@@ -34,20 +36,23 @@ export default function App() {
   }
  
   return (
-    <View style={styles.appContainer}>
-      <Button title="Add new goal" color="#5e0acc" onPress={startAddGoalHandler}/>
-      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancelModal={endAddGoalHandler}/>
-      <View style={styles.goalsContainer}>
-        <FlatList
-         data={courseGoals} 
-         renderItem={itemData => {
-          return <GoalItem
-            onDeleteItem={deleteGoalHandler}
-            text={itemData.item.text}
-            id={itemData.item.key}/>
-         }} />
+    <>
+      <StatusBar style='light'/>
+      <View style={styles.appContainer}>
+        <Button title="Add new goal" color="#a065ec" onPress={startAddGoalHandler}/>
+        <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancelModal={endAddGoalHandler}/>
+        <View style={styles.goalsContainer}>
+          <FlatList
+          data={courseGoals} 
+          renderItem={itemData => {
+            return <GoalItem
+              onDeleteItem={deleteGoalHandler}
+              text={itemData.item.text}
+              id={itemData.item.key}/>
+          }} />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
